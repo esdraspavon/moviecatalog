@@ -1,0 +1,22 @@
+{
+  "name": "moviecatalog",
+  "version": "1.0.0",
+  "description": "Catalogo de peliculas",
+  "main": "index.js",
+  "scripts": {
+    "devOld": "next",
+    "build": "next build",
+    "startOld": "next start",
+    "dev": "node server.js",
+    "start": "NODE_ENV=production node server.js",
+    "export": "npm run build && next export"
+  },
+  "author": "Esdras Pavon",
+  "license": "MIT",
+  "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
+    "next": "^7.0.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  }
+}
