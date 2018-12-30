@@ -26,12 +26,13 @@ export default class Layout extends React.Component {
       <style jsx>{`
       header {
         color:#fff;
-              background:#8756ca;
+              background:#202020;
               padding:15px;
               text-align:center;
           }
       header a{
         color: #fff;
+        font-weight:500;
         text-decoration: none;
       }
       `}
@@ -39,8 +40,8 @@ export default class Layout extends React.Component {
       <style jsx global>{`
       body{
           margin:0;
-          font-family:system-ui;
-          background:white;
+          font-family:'Sans Serif';
+          background:#141414;
       }
       /* Make clicks pass-through */
 #nprogress {

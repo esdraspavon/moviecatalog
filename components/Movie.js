@@ -23,18 +23,24 @@ export default class Movie extends React.Component {
       <nav>
           <a onClick={onClose}>&lt; Volver</a>
       </nav>
-    <div className="banner" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.backdrop_path})` }} />
-      <h1>{ movie.title }</h1>
-    <p>{movie.overview}</p>
-      <h2>Generos</h2>
+      <img src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}/> 
+      <div className="modal-title">
+        <h1>{ movie.title }</h1>
+      </div>
+      <div className="modal-description">
+        <p>{movie.overview}</p>
+      </div>
+      <div className="movie-genres">
+
         { genres.map((genre) => (
-        //   <Link href={`/movie?id=${ movie.id }`} prefetch>
-        //   <a key={movie.id} className="movie">
-        //   <img src={`https://image.tmdb.org/t/p/w500/${ movie.poster_path }`} />
-            <span key={ genre.id }>{genre.name} </span>
-        //   </a>
-        //   </Link>
-        )) }
+          //   <Link href={`/movie?id=${ movie.id }`} prefetch>
+          //   <a key={movie.id} className="movie">
+          //   <img src={`https://image.tmdb.org/t/p/w500/${ movie.poster_path }`} />
+          <span className="movie-genre" key={ genre.id }>{genre.name} </span>
+          //   </a>
+          //   </Link>
+          )) }
+      </div>
     </div>
 
     <style jsx>{`
@@ -51,16 +57,16 @@ export default class Movie extends React.Component {
 
       .banner {
         width: 100%;
-        padding-bottom: 25%;
+        height: 100%;
         background-position: 50% 50%;
         background-size: cover;
         background-color: #aaa;
       }
       .movie {
         display: flex;
-        height: 100%;
+        min-height: 100%;
         flex-direction: column;
-        background: #8756ca;
+        background: #141414;
         color: white;
       }
       picture {
@@ -84,7 +90,11 @@ export default class Movie extends React.Component {
         background: rgba(0,0,0,0.3);
         text-align: center;
       }
-      h3 {
+      h1{
+        font-size:23px;
+      }
+      h2 {
+        font-size:17px;
         margin: 0;
       }
       h6 {
@@ -103,8 +113,31 @@ export default class Movie extends React.Component {
         right: 0;
         bottom: 0;
         z-index: 99999;
+        overflow-y:auto;
+      }
+      .modal-title{
+        text-align: center;
+      }
+      .modal-description{
+        margin:15px;
+      }
+      .movie-genre{
+        background:green;
+        padding:5px;
+        margin-right:5px;
+        border-radius:5px;
+      }
+      .movie-genres{
+        display:flex;
+        margin: 15px;
       }
     `}</style>
+      <style jsx global>{`
+      body{
+        overflow:hidden;
+      }
+        `}
+      </style>
   </div>
     
     
