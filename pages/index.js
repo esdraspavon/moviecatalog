@@ -3,8 +3,13 @@ import Link from 'next/link'
 import Layout from '../components/Layout'
 import ChannelGrid from '../components/ChannelGrid'
 import Error from 'next/error'
+import Movie from '../components/Movie'
 
 export default class extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { openMovie: null }
+  }
   static async getInitialProps({ res }){
     try {
 
@@ -16,17 +21,35 @@ export default class extends React.Component {
       return { movies:null, statusCode:503 }
     }
   }
+
+  openMovieModal = (event, movie) => {
+    event.preventDefault()
+    this.setState({
+      openMovie: movie
+    })
+  }
+
+  closeMovieModal = (event) => {
+    event.preventDefault()
+    this.setState({
+      openMovie: null
+    })
+  }
   
   render() {
     const { movies, statusCode } = this.props
+    const { openMovie } = this.state
 
     if( statusCode !== 200){
       return <Error statusCode={statusCode} />
     }
 
     return <Layout title="MovieCatalog">
+    { openMovie && 
+        <Movie movie={ openMovie } onClose= { this.closeMovieModal } />
+      }
       
-      <ChannelGrid movies={ movies } />
+      <ChannelGrid movies={ movies } onClickMovie={ this.openMovieModal }/>
       
     </Layout>
   }  

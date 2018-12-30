@@ -2,17 +2,16 @@ import Link from 'next/link'
 
 export default class ChannelGrid extends React.Component{
     render() {
-        const { movies } = this.props
+        const { movies, onClickMovie } = this.props
         return <div>
 
         <div className="movies">
         { movies.map((movie) => (
-          <Link href={`./movie?id=${ movie.id }`} prefetch>
-          <a key={movie.id} className="movie">
+          <a key={movie.id} className="movie"
+          onClick={ (event) => onClickMovie(event, movie) }>
           <img src={`https://image.tmdb.org/t/p/w500/${ movie.poster_path }`} />
           <h2>{movie.title}</h2>
           </a>
-          </Link>
         )) }
       </div>
 
